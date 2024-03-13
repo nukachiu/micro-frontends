@@ -1,0 +1,9 @@
+<section class="motd-container">
+  <section class="text-container">
+    <span>{{ currentMessageOfTheDay$ | async }}</span>
+  </section>
+  <section>
+    <button (click)="upArrowClick()">&#9650;</button>
+    <button (click)="downArrowClick()">&#9660;</button>
+  </section>
+</section>

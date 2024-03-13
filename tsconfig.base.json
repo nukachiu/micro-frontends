@@ -14,7 +14,15 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@my-micro-frontends/host-lib": ["libs/host/host-lib/src/index.ts"],
+      "@my-micro-frontends/message-of-the-day-feature": [
+        "libs/host/message-of-the-day-feature/src/index.ts"
+      ],
+      "app1/Routes": ["apps/app1/src/app/remote-entry/entry.routes.ts"],
+      "app2/Routes": ["apps/app2/src/app/remote-entry/entry.routes.ts"],
+      "cart/Routes": ["apps/cart/src/app/remote-entry/entry.routes.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
