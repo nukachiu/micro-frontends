@@ -87,6 +87,14 @@ export class MessageOfTheDayFeatureService {
     return this._currentMessageOfTheDay$;
   }
 
+  public get currentIndexOfMessages(): Observable<number> {
+    return this._currentMessageIndex$;
+  }
+
+  public get numberOfAllMessages(): Observable<number> {
+    return this._numberOfMessages;
+  }
+
   public getNextMessage(): void {
     this._directionByKeys.next('up');
   }

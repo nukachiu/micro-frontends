@@ -1,8 +1,20 @@
-<section class="motd-container">
+<section
+  *ngrxLet="{
+    currentMessageIndex: currentMessageIndex$,
+    numberOfMessages: totalNumberOfMessages$,
+    currentMessageOfTheDay: currentMessageOfTheDay$
+  } as vm"
+  class="motd-container"
+>
   <section class="text-container">
-    <span>{{ currentMessageOfTheDay$ | async }}</span>
+    <span>({{ vm.currentMessageIndex + 1 }}/{{ vm.numberOfMessages }})</span>
+    <span
+      *ngrxLet="currentMessageOfTheDay$ as currentMessageOfTheDay"
+      title="{{ currentMessageOfTheDay }}"
+      >{{ currentMessageOfTheDay }}</span
+    >
   </section>
-  <section>
+  <section class="control-section">
     <button (click)="upArrowClick()">&#9650;</button>
     <button (click)="downArrowClick()">&#9660;</button>
   </section>

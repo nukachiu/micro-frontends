@@ -1,4 +1,4 @@
-import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
+import { type Meta, type StoryObj } from '@storybook/angular';
 import { MessageOfTheDayFeatureComponent } from './message-of-the-day-feature.component';
 
 import { within } from '@storybook/testing-library';
@@ -27,26 +27,11 @@ class MockMessageOfTheDayHttpService implements IMessageOfTheDayHttpService {
   }
 }
 
-// const MESSAGE_OF_THE_DAY_HTTP_SERVICE_TOKEN =
-//   new InjectionToken<IMessageOfTheDayHttpService>(
-//     'IMessageOfTheDayHttpService'
-//   );
-
 const meta: Meta<MessageOfTheDayFeatureComponent> = {
   component: MessageOfTheDayFeatureComponent,
   title: 'MessageOfTheDayFeatureComponent',
-  // decorators: [
-  //   moduleMetadata({
-  //     providers: [
-  //       {
-  //         provide: MessageOfTheDayHttpService,
-  //         useClass: MockMessageOfTheDayHttpService,
-  //       },
-  //       MessageOfTheDayPollingService,
-  //     ],
-  //   }),
-  // ],
 };
+
 export default meta;
 type Story = StoryObj<MessageOfTheDayFeatureComponent>;
 
