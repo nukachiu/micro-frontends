@@ -8,7 +8,6 @@ import { Observable, of } from 'rxjs';
 export class MessageOfTheDayHttpService implements IMessageOfTheDayHttpService {
   getMessages(): Observable<string[]> {
     const messages: string[] = ['Message 1', 'Message 2', 'Message 3'];
-    // Wrap your string array in an Observable
     return of(messages);
   }
 }

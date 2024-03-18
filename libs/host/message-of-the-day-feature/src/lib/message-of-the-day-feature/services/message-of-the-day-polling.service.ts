@@ -16,7 +16,7 @@ import { IMessageOfTheDayHttpService } from './interfaces/message-of-the-day-htt
   providedIn: 'root',
 })
 export class MessageOfTheDayPollingService {
-  private readonly DEFAULT_INTERVAL = 5000;
+  private readonly DEFAULT_INTERVAL = 60000;
 
   private _messageOfTheDayHttpService: MessageOfTheDayHttpService = inject(
     MessageOfTheDayHttpService
@@ -33,12 +33,12 @@ export class MessageOfTheDayPollingService {
   );
 
   private _messagesOfTheDay$: Observable<string[]> = this._temp.pipe(
-    switchMap((_) => this._messageOfTheDayHttpService.getMessages())
+    switchMap((_) => this._messageOfTheDayHttpService.getMessages()),
+    shareReplay(1)
   );
+
   constructor() {
     this._numberOfMilisecondsInterval$.next(this.DEFAULT_INTERVAL);
-    // this._temp.subscribe(x => console.log(`temp => ${x}`));
-    // this._messagesOfTheDay$.subscribe(console.log);
   }
 
   public get messagesOfTheDay(): Observable<string[]> {

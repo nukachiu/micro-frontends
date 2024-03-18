@@ -30,6 +30,7 @@ export class MessageOfTheDayFeatureService {
 
   private _messagesOfTheDayList$: Observable<string[]> =
     this._messageOfTheDayHttpPolling.messagesOfTheDay;
+
   private _numberOfMessages: Observable<number> =
     this._messagesOfTheDayList$.pipe(
       map((messagesOfTheDayList: string[]) => messagesOfTheDayList.length)
@@ -54,7 +55,6 @@ export class MessageOfTheDayFeatureService {
         index: number,
         [direction, numberOfMessages]: [DirectionMessage, number]
       ) => {
-        console.log('mor');
         if (direction === 'up') {
           if (index === numberOfMessages - 1) {
             return 0;
@@ -68,7 +68,8 @@ export class MessageOfTheDayFeatureService {
       },
       0
     ),
-    startWith(0)
+    startWith(0),
+    shareReplay(1)
   );
 
   private _currentMessageOfTheDay$: Observable<string> = combineLatest([
