@@ -11,19 +11,30 @@ import { MessageOfTheDayPollingService } from './services/message-of-the-day-pol
 import { MessageOfTheDayFeatureService } from './services/message-of-the-day-feature.service';
 
 class MockMessageOfTheDayHttpService implements IMessageOfTheDayHttpService {
-  getMessages(): Observable<string[]> {
-    return of([
-      'Mock Message 1',
-      'Mock Message 2',
-      'Mock Message 3',
-      'Mock Message 4',
-      'Mock Message 5',
-      'Mock Message 6',
-      'Mock Message 7',
-      'Mock Message 8',
-      'Mock Message 9',
-      'Mock Message 10',
-    ]);
+  private _count: number = 0;
+  private firstMessageSet = [
+    'Mock Message 1',
+    'Mock Message 2',
+    'Mock Message 3',
+    'Mock Message 4',
+    'Mock Message 5',
+  ];
+  private secondMessageSet = [
+    'New Mock Message 1',
+    'New Mock Message 2',
+    'New Mock Message 3',
+    'New Mock Message 4',
+    'New Mock Message 5',
+  ];
+
+  public getMessages(): Observable<string[]> {
+    console.info('The mock method is called');
+    this._count ++;
+    if (this._count < 2) {
+          return of(this.firstMessageSet);
+    } else {
+      return of(this.secondMessageSet);
+    }
   }
 }
 
