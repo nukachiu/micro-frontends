@@ -1,4 +1,5 @@
 <section
+  tabindex="0"
   *ngrxLet="{
     currentMessageIndex: currentMessageIndex$,
     numberOfMessages: totalNumberOfMessages$,
@@ -15,7 +16,7 @@
     >
   </section>
   <section class="control-section">
-    <button (click)="upArrowClick()">&#9650;</button>
+    <button [class.simulated-hover-effect]="simulateHoverEfectUpArrow" (click)="upArrowClick()">&#9650;</button>
     <button (click)="downArrowClick()">&#9660;</button>
   </section>
 </section>

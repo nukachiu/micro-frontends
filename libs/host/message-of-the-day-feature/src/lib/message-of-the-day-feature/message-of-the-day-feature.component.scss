@@ -35,3 +35,13 @@ $background-color: black;
     }
   }
 }
+
+@keyframes simulate-hover {
+  0% { background-color: initial; }
+  50% { background-color: #f0f0f0; }
+  100% { background-color: initial; }
+}
+
+.simulated-hover-effect {
+  animation: simulate-hover 1s ease forwards;
+}
