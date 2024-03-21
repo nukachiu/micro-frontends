@@ -1,1 +1,22 @@
-<div divideDiv class="widget-canvas-container"></div>
+<div class="widget-canvas-container" [ngStyle]="cssStyle">
+  <ng-container *ngIf="!isSplitVertically">
+    <button (click)="divedeDivVertically()">Vertically</button>
+    <button disabled>Horizontally</button>
+  </ng-container>
+  <ng-container *ngIf="isSplitVertically">
+    <ng-container *ngTemplateOutlet="verticallyLayout"></ng-container>
+  </ng-container>
+</div>
+
+<ng-template #verticallyLayout>
+  <div style="height: 100%; position: relative">
+    <widget-canvas-feature
+      [cssStyle]="verticallySplitUpperDivStyle"
+      [isRoot]="false"
+    />
+    <widget-canvas-feature
+      [cssStyle]="horizontallySplitUpperDivStyle"
+      [isRoot]="false"
+    />
+  </div>
+</ng-template>

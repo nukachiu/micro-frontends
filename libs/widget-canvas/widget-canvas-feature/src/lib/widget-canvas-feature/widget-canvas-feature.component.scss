@@ -2,5 +2,10 @@
   width: 90vw;
   height: 50vh;
   background-color: aqua;
-  border: 3px solid red;
+  border: 2px solid red;
+}
+
+.verticallySplited {
+  height: calc(50% - 4px);
+  width: calc(100% - 4px);
 }
