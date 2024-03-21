@@ -1,13 +1,12 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DivideDivDirective } from './directives/divide-div.directive';
 
 type CssStyle = {[key: string]: string};
 
 @Component({
   selector: 'widget-canvas-feature',
   standalone: true,
-  imports: [CommonModule, DivideDivDirective],
+  imports: [CommonModule],
   templateUrl: './widget-canvas-feature.component.html',
   styleUrl: './widget-canvas-feature.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
