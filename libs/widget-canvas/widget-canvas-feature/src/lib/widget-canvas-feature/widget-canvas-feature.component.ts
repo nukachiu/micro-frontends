@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 type CssStyle = {[key: string]: string};
@@ -18,29 +18,44 @@ export class WidgetCanvasFeatureComponent {
   @Input()
   public cssStyle: CssStyle = {};
 
-  public readonly verticallySplitUpperDivStyle: CssStyle = {
-    position: 'absolute',
+  public readonly verticallySplitTopDivStyle: CssStyle = {
+    position: 'relative',
     height: 'calc(50% - 2px)',
     top: '-2px',
     left: '-2px',
   };
 
-  public readonly horizontallySplitUpperDivStyle: CssStyle = {
-    position: 'absolute',
+  public readonly verticallySplitDownDivStyle: CssStyle = {
+    position: 'relative',
+    width: '100%',
     height: '50%',
-    top: 'calc(50% - 2px)',
+    top: '-4px',
+    left: '-2px',
+  };
+
+  public readonly horizontallySplitDivStyle: CssStyle = {
+    width: '100%',
+    position: 'relative',
+    top: '-2px',
     left: '-2px',
   };
 
   public isSplitHorizontally: boolean = false;
   public isSplitVertically: boolean = false;
 
-  public divedeDivVertically(): void {
+  public divedeDivVertically(e: Event): void {
+    e.stopPropagation();
     this.isSplitVertically = true;
   }
 
-  public divedeDivHorizontally(): void {
-    alert('divided horizontally');
+  public divedeDivHorizontally(e: Event): void {
+    e.stopPropagation();
     this.isSplitHorizontally = true;
+  }
+
+  @HostListener('click', ['$event'])
+  public onClick(e: Event) {
+    e.stopPropagation();
+    console.log(123);
   }
 }
